@@ -26,17 +26,17 @@ namespace test
             InitializeComponent();
 
             x = 120;
-            y = Bottom;
+            y = 423;
 
             int yCoordinateDiamond = 10;
             CoinGenerator.Start();
 
-            TimerElevator.Enabled = true;
-            pictureBox1.Visible = true;
-            pictureBox2.Visible = true;
-
+            
             textBox1.Text = "Well done! You passed the level!              " + Environment.NewLine + "" +
                             "\n Get on the elevator to collect your gem!";
+
+            pictureBox1.Visible = true;
+            pictureBox2.Visible = true;
         }
         
         private void Form1_Load(object sender, EventArgs e)
@@ -54,16 +54,60 @@ namespace test
         {
             switch (e.KeyCode)
             {
-                case Keys.Right:
+               case Keys.Right:
+
                     if (hero.Left < 370)
                     {
-                        hero.Left += 5;
+                        if (pictureBox1.Visible)
+                        {
+                            if (hero.Right < pictureBox1.Left || hero.Bottom<=pictureBox1.Top)
+                            {
+                                hero.Left += 5;
+                            }
+
+                            if (hero.Left >= pictureBox1.Right)
+                            {
+                                hero.Left += 5;
+                            }
+                        }
+                        else
+                        {
+                            hero.Left += 5;
+                        }
                     }
+
                     break;
+
                 case Keys.Left:
                     if (hero.Left > 0)
                     {
-                        hero.Left -= 5;
+                        if (pictureBox1.Visible)
+                        {
+                            if (hero.Left > pictureBox1.Right || hero.Bottom <= pictureBox1.Top)
+                            {
+                                hero.Left -= 5;
+                            }
+
+                            if (hero.Right <= pictureBox1.Left)
+                            {
+                                hero.Left -= 5;
+                            }
+                        }
+                        else
+                        {
+                            hero.Left -= 5;
+                        }
+
+                    }
+                    break;
+                case Keys.Up:
+                    int i = hero.Location.X;
+                    int m = hero.Location.Y;
+
+                    if ((hero.Right == pictureBox1.Left && hero.Bottom > pictureBox1.Location.Y) || (hero.Left == pictureBox1.Right && hero.Bottom > pictureBox1.Location.Y))
+                    {
+                        m-=5;
+                        hero.Location = new Point(i,m);
                     }
                     break;
                 case Keys.Escape:
@@ -84,12 +128,24 @@ namespace test
         }
 
         private void TimerElevator_Tick(object sender, EventArgs e)
-        {
-            if (y > pictureBox2.Bottom+20)
+        {            
+
+            int p = hero.Location.X;
+            int q = hero.Location.Y;
+
+            if (hero.Top > pictureBox2.Bottom)
             {
+                q -= 5;
+                hero.Location = new Point(p, q);
+            }
+            else
+            {
+                TimerElevator.Enabled = false;
+            }
+
                 y -= 5;
                 pictureBox1.Location = new Point(x, y);
-            }
+
         }
 
         private void CoinGenerator_Tick_1(object sender, EventArgs e)
@@ -105,7 +161,7 @@ namespace test
             coins[indexCoin].Top = 0;
             coins[indexCoin].Left = randomLocation.Next(0, 410);
             gamePanel.Controls.Add(coins[indexCoin]);
-            CoinGenerator.Interval = randomInterval.Next(100, 300);
+            CoinGenerator.Interval = 10000000;
             coinMovement.Start();
             indexCoin++;
         }
@@ -118,6 +174,16 @@ namespace test
                 int y = coins[i].Location.Y;
                 coins[i].Location = new Point(x, y + 5);
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hero_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

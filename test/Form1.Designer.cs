@@ -73,21 +73,23 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox1.Location = new System.Drawing.Point(118, 423);
+            this.pictureBox1.Location = new System.Drawing.Point(120, 420);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(169, 17);
+            this.pictureBox1.Size = new System.Drawing.Size(170, 20);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // hero
             // 
             this.hero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.hero.Location = new System.Drawing.Point(61, 390);
+            this.hero.Location = new System.Drawing.Point(0, 390);
             this.hero.Name = "hero";
             this.hero.Size = new System.Drawing.Size(30, 50);
             this.hero.TabIndex = 0;
             this.hero.TabStop = false;
+            this.hero.Click += new System.EventHandler(this.hero_Click);
             // 
             // textBox1
             // 
