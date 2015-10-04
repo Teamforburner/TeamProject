@@ -15,13 +15,12 @@ namespace test
         private int x;
         private int y;
 
-        int indexRocks = 0;
+        int indexCoin = 0;
         Random randomLocation = new Random();
         Random randomSize = new Random();
         Random randomInterval = new Random();
-        PictureBox rock = new PictureBox();
-        List<PictureBox> rocks = new List<PictureBox>();
-
+        PictureBox coin = new PictureBox();
+        List<PictureBox> coins = new List<PictureBox>();
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +29,7 @@ namespace test
             y = Bottom;
 
             int yCoordinateDiamond = 10;
+            CoinGenerator.Start();
 
             TimerElevator.Enabled = true;
             pictureBox1.Visible = true;
@@ -73,14 +73,6 @@ namespace test
             }
         }
 
-        private void rockGenerator_Tick(object sender, EventArgs e)
-        {
-            rock = new PictureBox();
-            rock.Left = randomLocation.Next(0, 400);
-            rock.Height = 30;
-            rock.Width = 30;
-        }
-
         private void gamePanel_Paint(object sender, PaintEventArgs e)
         {
 
@@ -100,5 +92,32 @@ namespace test
             }
         }
 
+        private void CoinGenerator_Tick_1(object sender, EventArgs e)
+        {
+            coin = new PictureBox();
+            coins.Add(coin);
+            randomLocation = new Random();
+            randomInterval = new Random();
+
+            coins[indexCoin].BackColor = Color.Yellow;
+            coins[indexCoin].Height = 30;
+            coins[indexCoin].Width = 30;
+            coins[indexCoin].Top = 0;
+            coins[indexCoin].Left = randomLocation.Next(0, 410);
+            gamePanel.Controls.Add(coins[indexCoin]);
+            CoinGenerator.Interval = randomInterval.Next(100, 300);
+            coinMovement.Start();
+            indexCoin++;
+        }
+
+        private void coinMovement_Tick_1(object sender, EventArgs e)
+        {
+            for (int i = 0; i < coins.Count; i++)
+            {
+                int x = coins[i].Location.X;
+                int y = coins[i].Location.Y;
+                coins[i].Location = new Point(x, y + 5);
+            }
+        }
     }
 }

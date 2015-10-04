@@ -33,11 +33,12 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.hero = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.grounPannel = new System.Windows.Forms.Panel();
             this.heroMovement = new System.Windows.Forms.Timer(this.components);
-            this.rockGenerator = new System.Windows.Forms.Timer(this.components);
             this.TimerElevator = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.coinMovement = new System.Windows.Forms.Timer(this.components);
+            this.CoinGenerator = new System.Windows.Forms.Timer(this.components);
             this.gamePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -88,6 +89,17 @@
             this.hero.TabIndex = 0;
             this.hero.TabStop = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.textBox1.Location = new System.Drawing.Point(99, 128);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(223, 82);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // grounPannel
             // 
             this.grounPannel.BackColor = System.Drawing.Color.Green;
@@ -101,25 +113,18 @@
             this.heroMovement.Enabled = true;
             this.heroMovement.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // rockGenerator
-            // 
-            this.rockGenerator.Enabled = true;
-            this.rockGenerator.Tick += new System.EventHandler(this.rockGenerator_Tick);
-            // 
             // TimerElevator
             // 
             this.TimerElevator.Tick += new System.EventHandler(this.TimerElevator_Tick);
             // 
-            // textBox1
+            // coinMovement
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.textBox1.Location = new System.Drawing.Point(99, 128);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(223, 82);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.coinMovement.Interval = 150;
+            this.coinMovement.Tick += new System.EventHandler(this.coinMovement_Tick_1);
+            // 
+            // CoinGenerator
+            // 
+            this.CoinGenerator.Tick += new System.EventHandler(this.CoinGenerator_Tick_1);
             // 
             // Form1
             // 
@@ -147,11 +152,12 @@
         private System.Windows.Forms.PictureBox hero;
         private System.Windows.Forms.Timer heroMovement;
         private System.Windows.Forms.Panel grounPannel;
-        private System.Windows.Forms.Timer rockGenerator;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Timer TimerElevator;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Timer coinMovement;
+        private System.Windows.Forms.Timer CoinGenerator;
     }
 }
 
