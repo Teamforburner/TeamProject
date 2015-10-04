@@ -26,3 +26,11 @@ C:\Users\ff\Documents\TeamProject\test\obj\Debug\test.csproj.GenerateResource.Ca
 C:\Users\User\TeamProject\test\bin\Debug\test.exe.config
 C:\Users\User\TeamProject\test\obj\Debug\test.exe
 C:\Users\User\TeamProject\test\obj\Debug\test.pdb
+C:\Users\User\TeamProject\test\bin\Debug\test.exe
+C:\Users\User\TeamProject\test\bin\Debug\test.pdb
+C:\Users\User\TeamProject\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+C:\Users\User\TeamProject\test\obj\Debug\test.Form1.resources
+C:\Users\User\TeamProject\test\obj\Debug\test.Form2.resources
+C:\Users\User\TeamProject\test\obj\Debug\test.Form3.resources
+C:\Users\User\TeamProject\test\obj\Debug\test.Properties.Resources.resources
+C:\Users\User\TeamProject\test\obj\Debug\test.csproj.GenerateResource.Cache
