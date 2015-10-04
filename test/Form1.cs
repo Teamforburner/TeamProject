@@ -36,7 +36,10 @@ namespace test
                             "\n Get on the elevator to collect your gem!";
 
             pictureBox1.Visible = true;
+            bool a = pictureBox1.Visible; 
             pictureBox2.Visible = true;
+
+
         }
         
         private void Form1_Load(object sender, EventArgs e)
@@ -76,6 +79,13 @@ namespace test
                         }
                     }
 
+                    if (hero.Left == pictureBox1.Left + pictureBox1.Width / 2 - 20)
+                    {
+                        TimerElevator.Enabled = true;
+                        pictureBox3.Visible = false;
+                        textBox1.Visible = false;
+                    }
+
                     break;
 
                 case Keys.Left:
@@ -97,6 +107,13 @@ namespace test
                         {
                             hero.Left -= 5;
                         }
+
+             if(hero.Left == pictureBox1.Left+pictureBox1.Width/2-20)
+            {
+                TimerElevator.Enabled = true;
+                pictureBox3.Visible = false;
+                textBox1.Visible = false;
+            }
 
                     }
                     break;
