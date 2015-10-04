@@ -34,6 +34,9 @@ namespace test
             TimerElevator.Enabled = true;
             pictureBox1.Visible = true;
             pictureBox2.Visible = true;
+
+            textBox1.Text = "Well done! You passed the level!              " + Environment.NewLine + "" +
+                            "\n Get on the elevator to collect your gem!";
         }
         
         private void Form1_Load(object sender, EventArgs e)
@@ -96,5 +99,6 @@ namespace test
                 pictureBox1.Location = new Point(x, y);
             }
         }
+
     }
 }
