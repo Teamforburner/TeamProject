@@ -12,6 +12,9 @@ namespace test
 {
     public partial class Form1 : Form
     {
+        private int x;
+        private int y;
+
         int indexRocks = 0;
         Random randomLocation = new Random();
         Random randomSize = new Random();
@@ -22,6 +25,15 @@ namespace test
         public Form1()
         {
             InitializeComponent();
+
+            x = 120;
+            y = Bottom;
+
+            int yCoordinateDiamond = 10;
+
+            TimerElevator.Enabled = true;
+            pictureBox1.Visible = true;
+            pictureBox2.Visible = true;
         }
         
         private void Form1_Load(object sender, EventArgs e)
@@ -69,6 +81,20 @@ namespace test
         private void gamePanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TimerElevator_Tick(object sender, EventArgs e)
+        {
+            if (y > pictureBox2.Bottom+20)
+            {
+                y -= 5;
+                pictureBox1.Location = new Point(x, y);
+            }
         }
     }
 }
