@@ -26,7 +26,7 @@ namespace test
             InitializeComponent();
 
             x = 120;
-            y = 423;
+            y = 420;
 
             int yCoordinateDiamond = 10;
             CoinGenerator.Start();
@@ -54,13 +54,13 @@ namespace test
         {
             switch (e.KeyCode)
             {
-               case Keys.Right:
+                case Keys.Right:
 
                     if (hero.Left < 370)
                     {
                         if (pictureBox1.Visible)
                         {
-                            if (hero.Right < pictureBox1.Left || hero.Bottom<=pictureBox1.Top)
+                            if (hero.Right < pictureBox1.Left || hero.Bottom <= pictureBox1.Top)
                             {
                                 hero.Left += 5;
                             }
@@ -106,8 +106,8 @@ namespace test
 
                     if ((hero.Right == pictureBox1.Left && hero.Bottom > pictureBox1.Location.Y) || (hero.Left == pictureBox1.Right && hero.Bottom > pictureBox1.Location.Y))
                     {
-                        m-=5;
-                        hero.Location = new Point(i,m);
+                        m -= 5;
+                        hero.Location = new Point(i, m);
                     }
                     break;
                 case Keys.Escape:
