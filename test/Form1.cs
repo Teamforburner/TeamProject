@@ -21,6 +21,7 @@ namespace test
         Random randomInterval = new Random();
         PictureBox coin = new PictureBox();
         List<PictureBox> coins = new List<PictureBox>();
+
         public Form1()
         {
             InitializeComponent();
@@ -36,8 +37,8 @@ namespace test
                             "\n Get on the elevator to collect your gem!";
 
             pictureBox1.Visible = true;
-            bool a = pictureBox1.Visible; 
-            pictureBox2.Visible = true;
+            pictureBox2.Visible = true; 
+
 
 
         }
@@ -83,7 +84,7 @@ namespace test
                     {
                         TimerElevator.Enabled = true;
                         pictureBox3.Visible = false;
-                        textBox1.Visible = false;
+
                     }
 
                     break;
