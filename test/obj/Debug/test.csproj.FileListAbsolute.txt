@@ -1,0 +1,14 @@
+D:\SoftUni\SoftUniExamTests\test\test\bin\Debug\test.exe.config
+D:\SoftUni\SoftUniExamTests\test\test\bin\Debug\test.exe
+D:\SoftUni\SoftUniExamTests\test\test\bin\Debug\test.pdb
+D:\SoftUni\SoftUniExamTests\test\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+D:\SoftUni\SoftUniExamTests\test\test\obj\Debug\test.Form1.resources
+D:\SoftUni\SoftUniExamTests\test\test\obj\Debug\test.Form2.resources
+D:\SoftUni\SoftUniExamTests\test\test\obj\Debug\test.Form3.resources
+D:\SoftUni\SoftUniExamTests\test\test\obj\Debug\test.Properties.Resources.resources
+D:\SoftUni\SoftUniExamTests\test\test\obj\Debug\test.csproj.GenerateResource.Cache
+D:\SoftUni\SoftUniExamTests\test\test\obj\Debug\test.exe
+D:\SoftUni\SoftUniExamTests\test\test\obj\Debug\test.pdb
+C:\Users\User\Desktop\TeamWork1.git\trunk\test\bin\Debug\test.exe.config
+C:\Users\User\Desktop\TeamWork1.git\trunk\test\obj\Debug\test.exe
+C:\Users\User\Desktop\TeamWork1.git\trunk\test\obj\Debug\test.pdb
