@@ -34,13 +34,20 @@
             this.grounPannel = new System.Windows.Forms.Panel();
             this.heroMovement = new System.Windows.Forms.Timer(this.components);
             this.rockGenerator = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.TimerElevator = new System.Windows.Forms.Timer(this.components);
             this.gamePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hero)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // gamePanel
             // 
             this.gamePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gamePanel.Controls.Add(this.pictureBox2);
+            this.gamePanel.Controls.Add(this.pictureBox1);
             this.gamePanel.Controls.Add(this.hero);
             this.gamePanel.Location = new System.Drawing.Point(12, 14);
             this.gamePanel.Name = "gamePanel";
@@ -75,6 +82,31 @@
             this.rockGenerator.Enabled = true;
             this.rockGenerator.Tick += new System.EventHandler(this.rockGenerator_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox1.Location = new System.Drawing.Point(118, 423);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(169, 17);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Maroon;
+            this.pictureBox2.Location = new System.Drawing.Point(184, 56);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(28, 18);
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // TimerElevator
+            // 
+            this.TimerElevator.Tick += new System.EventHandler(this.TimerElevator_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -88,6 +120,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.gamePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.hero)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -99,6 +133,9 @@
         private System.Windows.Forms.Timer heroMovement;
         private System.Windows.Forms.Panel grounPannel;
         private System.Windows.Forms.Timer rockGenerator;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Timer TimerElevator;
     }
 }
 
