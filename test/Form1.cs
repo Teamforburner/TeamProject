@@ -21,12 +21,13 @@ namespace test
         Random randomInterval = new Random();
         PictureBox coin = new PictureBox();
         List<PictureBox> coins = new List<PictureBox>();
+
         public Form1()
         {
             InitializeComponent();
 
             x = 120;
-            y = 423;
+            y = 420;
 
             int yCoordinateDiamond = 10;
             CoinGenerator.Start();
@@ -36,7 +37,10 @@ namespace test
                             "\n Get on the elevator to collect your gem!";
 
             pictureBox1.Visible = true;
-            pictureBox2.Visible = true;
+            pictureBox2.Visible = true; 
+
+
+
         }
         
         private void Form1_Load(object sender, EventArgs e)
@@ -54,13 +58,13 @@ namespace test
         {
             switch (e.KeyCode)
             {
-               case Keys.Right:
+                case Keys.Right:
 
                     if (hero.Left < 370)
                     {
                         if (pictureBox1.Visible)
                         {
-                            if (hero.Right < pictureBox1.Left || hero.Bottom<=pictureBox1.Top)
+                            if (hero.Right < pictureBox1.Left || hero.Bottom <= pictureBox1.Top)
                             {
                                 hero.Left += 5;
                             }
@@ -74,6 +78,13 @@ namespace test
                         {
                             hero.Left += 5;
                         }
+                    }
+
+                    if (hero.Left == pictureBox1.Left + pictureBox1.Width / 2 - 20)
+                    {
+                        TimerElevator.Enabled = true;
+                        pictureBox3.Visible = false;
+
                     }
 
                     break;
@@ -98,6 +109,13 @@ namespace test
                             hero.Left -= 5;
                         }
 
+             if(hero.Left == pictureBox1.Left+pictureBox1.Width/2-20)
+            {
+                TimerElevator.Enabled = true;
+                pictureBox3.Visible = false;
+                textBox1.Visible = false;
+            }
+
                     }
                     break;
                 case Keys.Up:
@@ -106,8 +124,8 @@ namespace test
 
                     if ((hero.Right == pictureBox1.Left && hero.Bottom > pictureBox1.Location.Y) || (hero.Left == pictureBox1.Right && hero.Bottom > pictureBox1.Location.Y))
                     {
-                        m-=5;
-                        hero.Location = new Point(i,m);
+                        m -= 5;
+                        hero.Location = new Point(i, m);
                     }
                     break;
                 case Keys.Escape:
