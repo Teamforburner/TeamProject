@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gamePanel = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -83,7 +84,8 @@
             // 
             // hero
             // 
-            this.hero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.hero.BackColor = System.Drawing.Color.Transparent;
+            this.hero.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("hero.BackgroundImage")));
             this.hero.Location = new System.Drawing.Point(0, 390);
             this.hero.Name = "hero";
             this.hero.Size = new System.Drawing.Size(30, 50);

@@ -56,3 +56,14 @@ C:\Users\ff\Documents\NewGame\TeamProject\test\obj\Debug\test.Form2.resources
 C:\Users\ff\Documents\NewGame\TeamProject\test\obj\Debug\test.Form3.resources
 C:\Users\ff\Documents\NewGame\TeamProject\test\obj\Debug\test.Properties.Resources.resources
 C:\Users\ff\Documents\NewGame\TeamProject\test\obj\Debug\test.csproj.GenerateResource.Cache
+C:\Users\Trushka\TeamProject\test\bin\Debug\test.exe.config
+C:\Users\Trushka\TeamProject\test\obj\Debug\test.exe
+C:\Users\Trushka\TeamProject\test\obj\Debug\test.pdb
+C:\Users\Trushka\TeamProject\test\bin\Debug\test.exe
+C:\Users\Trushka\TeamProject\test\bin\Debug\test.pdb
+C:\Users\Trushka\TeamProject\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+C:\Users\Trushka\TeamProject\test\obj\Debug\test.Form1.resources
+C:\Users\Trushka\TeamProject\test\obj\Debug\test.Form2.resources
+C:\Users\Trushka\TeamProject\test\obj\Debug\test.Form3.resources
+C:\Users\Trushka\TeamProject\test\obj\Debug\test.Properties.Resources.resources
+C:\Users\Trushka\TeamProject\test\obj\Debug\test.csproj.GenerateResource.Cache
