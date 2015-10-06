@@ -351,6 +351,15 @@ namespace test
                     rocks.RemoveAt(i);
                     textBox2.Text = "Lives: " + lives;
                     indexRock--;
+
+                    if (lives == 0)
+                    {
+                        Hide();
+                        Form2 form2 = new Form2();
+                        form2.ShowDialog();
+                        Dispose();
+                    }
+
                 }
 
             }
