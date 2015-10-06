@@ -109,10 +109,13 @@ namespace test
                 case Keys.Left:
                     if (hero.Left > 0)
                     {
-                        coinMovement.Start();
-                        CoinGenerator.Start();
-                        rockMovement.Start();
-                        rockGenerator.Start();
+                        if (!pictureBox1.Visible)
+                        {
+                            coinMovement.Start();
+                            CoinGenerator.Start();
+                            rockMovement.Start();
+                            rockGenerator.Start();
+                        }
 
                         hero.Left -= speedHero; 
                     }
@@ -165,6 +168,8 @@ namespace test
             }
             else
             {
+                TimerElevator.Enabled = false;
+
                 GetTheGem();
 
                 IncreaseDifficulty();
@@ -174,9 +179,7 @@ namespace test
         private void GetTheGem()
         {
             gems++;
-            TimerElevator.Enabled = false;
             pictureBox2.Visible = false;
-
             hero.Location = new Point(30, 390);
             pictureBox1.Visible = false;
             y = 420;
@@ -200,7 +203,7 @@ namespace test
             {
                 rockFrequency -= 400;
             }
-            else if (rockFrequency > 40)
+            else if (rockFrequency > 200)
             {
                 rockFrequency -= 40;
             }
