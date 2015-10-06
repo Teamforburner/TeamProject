@@ -31,21 +31,23 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gamePanel = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.hero = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.grounPannel = new System.Windows.Forms.Panel();
             this.heroMovement = new System.Windows.Forms.Timer(this.components);
             this.TimerElevator = new System.Windows.Forms.Timer(this.components);
             this.coinMovement = new System.Windows.Forms.Timer(this.components);
             this.CoinGenerator = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.hero = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.rockGenerator = new System.Windows.Forms.Timer(this.components);
+            this.rockMovement = new System.Windows.Forms.Timer(this.components);
             this.gamePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hero)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // gamePanel
@@ -62,7 +64,15 @@
             this.gamePanel.TabIndex = 0;
             this.gamePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.gamePanel_Paint);
             // 
-//<<<<<<< HEAD
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::test.Properties.Resources.ArrowDown;
+            this.pictureBox3.Location = new System.Drawing.Point(186, 246);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(46, 67);
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Maroon;
@@ -88,7 +98,7 @@
             // 
             // hero
             // 
-            this.hero.BackColor = System.Drawing.Color.Transparent;
+            this.hero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.hero.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("hero.BackgroundImage")));
             this.hero.Location = new System.Drawing.Point(0, 390);
             this.hero.Name = "hero";
@@ -97,8 +107,6 @@
             this.hero.TabStop = false;
             this.hero.Click += new System.EventHandler(this.hero_Click);
             // 
-//=======
-//>>>>>>> 974fff254d5ccd87acac9591d67d629d0e6d6aff
             // textBox1
             // 
             this.textBox1.Enabled = false;
@@ -136,47 +144,13 @@
             // 
             this.CoinGenerator.Tick += new System.EventHandler(this.CoinGenerator_Tick_1);
             // 
-            // pictureBox2
+            // rockGenerator
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Maroon;
-            this.pictureBox2.BackgroundImage = global::test.Properties.Resources.DiamondResize3;
-            this.pictureBox2.Location = new System.Drawing.Point(177, 47);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 32);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.rockGenerator.Tick += new System.EventHandler(this.rockGenerator_Tick);
             // 
-            // pictureBox1
+            // rockMovement
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox1.Location = new System.Drawing.Point(120, 420);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(170, 20);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // hero
-            // 
-            this.hero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.hero.Location = new System.Drawing.Point(0, 390);
-            this.hero.Name = "hero";
-            this.hero.Size = new System.Drawing.Size(30, 50);
-            this.hero.TabIndex = 0;
-            this.hero.TabStop = false;
-            this.hero.Click += new System.EventHandler(this.hero_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImage = global::test.Properties.Resources.ArrowDown;
-            this.pictureBox3.Location = new System.Drawing.Point(186, 246);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(46, 67);
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
+            this.rockMovement.Tick += new System.EventHandler(this.rockMovement_Tick);
             // 
             // Form1
             // 
@@ -191,10 +165,10 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.gamePanel.ResumeLayout(false);
             this.gamePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hero)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -212,6 +186,8 @@
         private System.Windows.Forms.Timer coinMovement;
         private System.Windows.Forms.Timer CoinGenerator;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Timer rockGenerator;
+        private System.Windows.Forms.Timer rockMovement;
     }
 }
 

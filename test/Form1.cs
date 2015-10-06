@@ -16,11 +16,18 @@ namespace test
         private int y;
 
         int indexCoin = 0;
+        int indexRock = 0;
+        private int coinCounter = 0;
+
         Random randomLocation = new Random();
         Random randomSize = new Random();
         Random randomInterval = new Random();
         PictureBox coin = new PictureBox();
         List<PictureBox> coins = new List<PictureBox>();
+        PictureBox rock = new PictureBox();
+        Random randomRockLocation = new Random();
+        Random randomRockInterval = new Random();
+        List<PictureBox> rocks = new List<PictureBox>();
 
         public Form1()
         {
@@ -28,13 +35,13 @@ namespace test
 
             x = 120;
             y = 420;
+            rockGenerator.Start();
 
             int yCoordinateDiamond = 10;
             CoinGenerator.Start();
 
             
-            textBox1.Text = "Well done! You passed the level!              " + Environment.NewLine + "" +
-                            "\n Get on the elevator to collect your gem!";
+
 
             pictureBox1.Visible = true;
             pictureBox2.Visible = true; 
@@ -179,7 +186,7 @@ namespace test
             coins[indexCoin].Top = 0;
             coins[indexCoin].Left = randomLocation.Next(0, 410);
             gamePanel.Controls.Add(coins[indexCoin]);
-            CoinGenerator.Interval = 10000000;
+            CoinGenerator.Interval = 1000;
             coinMovement.Start();
             indexCoin++;
         }
@@ -191,6 +198,28 @@ namespace test
                 int x = coins[i].Location.X;
                 int y = coins[i].Location.Y;
                 coins[i].Location = new Point(x, y + 5);
+
+                bool a = coins[i].Bottom == hero.Top;
+                bool b = coins[i].Left >= hero.Left && coins[i].Left <= hero.Right;
+                bool c = false;
+
+                if (hero.Left < coins[i].Left)
+                {
+                    c = hero.Right >= coins[i].Left && hero.Location.Y <= coins[i].Location.Y + 30;
+                }
+                else
+                {
+                    c = hero.Left < coins[i].Right && hero.Location.Y <= coins[i].Location.Y + 30;
+                }
+
+                if ((a && (b || (coins[i].Right > hero.Left && coins[i].Right < hero.Right))) || c)
+                {
+                    coinCounter++;
+                    gamePanel.Controls.Remove(coins[i]);
+                    coins.RemoveAt(i);
+                    textBox1.Text = "                " + coinCounter;
+                    indexCoin--;
+                }
             }
         }
 
@@ -202,6 +231,35 @@ namespace test
         private void hero_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void rockGenerator_Tick(object sender, EventArgs e)
+        {
+            rock = new PictureBox();
+            rocks.Add(rock);
+            randomRockLocation = new Random();
+            randomRockInterval = new Random();
+
+            rocks[indexRock].BackColor = Color.Gray;
+            rocks[indexRock].Height = 30;
+            rocks[indexRock].Width = 30;
+            rocks[indexRock].Top = 0;
+            rocks[indexRock].Left = randomLocation.Next(0, 370);
+            gamePanel.Controls.Add(rocks[indexRock]);
+            rockGenerator.Interval = randomInterval.Next(4000, 5000);
+            rockMovement.Start();
+            indexRock++;
+        }
+
+        private void rockMovement_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < rocks.Count; i++)
+            {
+                int x = rocks[i].Location.X;
+                int y = rocks[i].Location.Y;
+                rocks[i].Location = new Point(x, y + 5);
+
+            }
         }
     }
 }
