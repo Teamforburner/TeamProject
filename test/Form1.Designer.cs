@@ -54,7 +54,7 @@
             // 
             // gamePanel
             // 
-            this.gamePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gamePanel.BackColor = System.Drawing.Color.White;
             this.gamePanel.Controls.Add(this.pictureBox3);
             this.gamePanel.Controls.Add(this.pictureBox2);
             this.gamePanel.Controls.Add(this.pictureBox1);

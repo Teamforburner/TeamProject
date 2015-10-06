@@ -73,6 +73,16 @@ namespace test.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CoinSM3DL {
+            get {
+                object obj = ResourceManager.GetObject("CoinSM3DL", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DiamondResize2 {
             get {
                 object obj = ResourceManager.GetObject("DiamondResize2", resourceCulture);
