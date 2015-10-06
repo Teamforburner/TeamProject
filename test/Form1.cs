@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using test.Properties;
 
 namespace test
 {
@@ -23,8 +24,8 @@ namespace test
         Random randomLocation = new Random();
         Random randomSize = new Random();
         Random randomInterval = new Random();
-        PictureBox coin = new PictureBox();
-        List<PictureBox> coins = new List<PictureBox>();
+        Oval coin = new Oval() ;
+        List<Oval> coins = new List<Oval>();
         PictureBox rock = new PictureBox();
         Random randomRockLocation = new Random();
         Random randomRockInterval = new Random();
@@ -176,12 +177,13 @@ namespace test
 
         private void CoinGenerator_Tick_1(object sender, EventArgs e)
         {
-            coin = new PictureBox();
+            coin = new Oval();
             coins.Add(coin);
             randomLocation = new Random();
             randomInterval = new Random();
 
-            coins[indexCoin].BackColor = Color.Yellow;
+            coins[indexCoin].BackColor = Color.FromArgb(128, 255, 255);
+            coins[indexCoin].Image = Resources.CoinSM3DL;
             coins[indexCoin].Height = 30;
             coins[indexCoin].Width = 30;
             coins[indexCoin].Top = 0;
