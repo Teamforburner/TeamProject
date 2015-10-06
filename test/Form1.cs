@@ -18,6 +18,7 @@ namespace test
         int indexCoin = 0;
         int indexRock = 0;
         private int coinCounter = 0;
+        private int lives = 3;
 
         Random randomLocation = new Random();
         Random randomSize = new Random();
@@ -205,11 +206,11 @@ namespace test
 
                 if (hero.Left < coins[i].Left)
                 {
-                    c = hero.Right >= coins[i].Left && hero.Location.Y <= coins[i].Location.Y + 30;
+                    c = hero.Right >= coins[i].Left && hero.Location.Y <= coins[i].Location.Y + 30 && hero.Location.Y+50>coins[i].Location.Y;
                 }
                 else
                 {
-                    c = hero.Left < coins[i].Right && hero.Location.Y <= coins[i].Location.Y + 30;
+                    c = hero.Left <= coins[i].Right && hero.Location.Y <= coins[i].Location.Y + 30 && hero.Location.Y + 50 > coins[i].Location.Y;
                 }
 
                 if ((a && (b || (coins[i].Right > hero.Left && coins[i].Right < hero.Right))) || c)
@@ -217,7 +218,7 @@ namespace test
                     coinCounter++;
                     gamePanel.Controls.Remove(coins[i]);
                     coins.RemoveAt(i);
-                    textBox1.Text = "                " + coinCounter;
+                    textBox3.Text = "Coins: " + coinCounter;
                     indexCoin--;
                 }
             }
@@ -258,6 +259,28 @@ namespace test
                 int x = rocks[i].Location.X;
                 int y = rocks[i].Location.Y;
                 rocks[i].Location = new Point(x, y + 5);
+
+                bool a = rocks[i].Bottom == hero.Top;
+                bool b = rocks[i].Left >= hero.Left && rocks[i].Left <= hero.Right;
+                bool c = false;
+
+                if (hero.Left < rocks[i].Left)
+                {
+                    c = hero.Right >= rocks[i].Left && hero.Location.Y <= rocks[i].Location.Y + 30 && hero.Location.Y+50> rocks[i].Location.Y;
+                }
+                else
+                {
+                    c = hero.Left < rocks[i].Right && hero.Location.Y <= rocks[i].Location.Y + 30 && hero.Location.Y+50>rocks[i].Location.Y;
+                }
+
+                if ((a && (b || (rocks[i].Right > hero.Left && rocks[i].Right < hero.Right))) || c)
+                {
+                    lives--;
+                    gamePanel.Controls.Remove(rocks[i]);
+                    rocks.RemoveAt(i);
+                    textBox2.Text = "Lives: " + lives;
+                    indexRock--;
+                }
 
             }
         }
