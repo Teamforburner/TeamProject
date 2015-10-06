@@ -109,35 +109,12 @@ namespace test
                 case Keys.Left:
                     if (hero.Left > 0)
                     {
-                        if (pictureBox1.Visible)
-                        {
-                            if (hero.Left > pictureBox1.Right || hero.Bottom <= pictureBox1.Top)
-                            {
-                                hero.Left -= speedHero;
-                            }
+                        coinMovement.Start();
+                        CoinGenerator.Start();
+                        rockMovement.Start();
+                        rockGenerator.Start();
 
-                            if (hero.Right <= pictureBox1.Left)
-                            {
-                                hero.Left -= speedHero;
-                            }
-                            
-                            if(hero.Left == pictureBox1.Left+pictureBox1.Width/2-20)
-                            {
-                                TimerElevator.Enabled = true;
-                                pictureBox3.Visible = false;
-                                textBox1.Visible = false;
-                            }
-
-                        }
-                        else
-                        {
-                            coinMovement.Start();
-                            CoinGenerator.Start();
-                            rockMovement.Start();
-                            rockGenerator.Start();
-
-                            hero.Left -= speedHero;
-                        }
+                        hero.Left -= speedHero; 
                     }
                     break;
                 case Keys.Up:
@@ -188,42 +165,54 @@ namespace test
             }
             else
             {
-                gems++;
-                TimerElevator.Enabled = false;
-                pictureBox2.Visible = false;
+                GetTheGem();
 
-                hero.Location = new Point(30, 390);
-                pictureBox1.Visible = false;
-                y = 420;
-                pictureBox1.Location = new Point(x,y);
-                textBox1.Visible = false;
-                textBox2.Visible = true;
-                textBox4.Visible = true;
-                textBox4.Text = "Gems: " + gems;
+                IncreaseDifficulty();
+            }
+        }
 
-                if (coinMovement.Interval != 90)
-                {
-                    coinMovement.Interval -= 10;
-                }
-                else
-                {
-                    speed += 5;
-                    speedHero = normalSpeed;
-                    speedHero += 5;
-                }
+        private void GetTheGem()
+        {
+            gems++;
+            TimerElevator.Enabled = false;
+            pictureBox2.Visible = false;
 
-                if (rockFrequency > 400)
-                {
-                    rockFrequency -= 400;
-                }
+            hero.Location = new Point(30, 390);
+            pictureBox1.Visible = false;
+            y = 420;
+            pictureBox1.Location = new Point(x, y);
+            textBox1.Visible = false;
+            textBox2.Visible = true;
+            textBox4.Visible = true;
+            textBox4.Text = "Gems: " + gems;
+        }
 
-                if (coinFrequency > 400)
-                {
-                    coinFrequency -= 400;
-                }
-
+        private void IncreaseDifficulty()
+        {
+            if (speed < 15)
+            {
+                speed += 5;
+                speedHero = normalSpeed;
+                speedHero += 5;
             }
 
+            if (rockFrequency > 400)
+            {
+                rockFrequency -= 400;
+            }
+            else if (rockFrequency > 40)
+            {
+                rockFrequency -= 40;
+            }
+
+            if (coinFrequency > 400)
+            {
+                coinFrequency -= 400;
+            }
+            else if (coinFrequency > 40)
+            {
+                coinFrequency -= 40;
+            }
         }
 
         private void CoinGenerator_Tick_1(object sender, EventArgs e)
@@ -253,42 +242,72 @@ namespace test
                 int y = coins[i].Location.Y;
                 coins[i].Location = new Point(x, y + speed);
 
-                bool a = coins[i].Bottom == hero.Top;
-                bool b = coins[i].Left >= hero.Left && coins[i].Left <= hero.Right;
-                bool c = false;
+                DetectCollisionWithACoin(i);
+            }
+        }
 
-                if (hero.Left < coins[i].Left)
+        private void DetectCollisionWithACoin(int i)
+        {
+            bool isCoinBottomNextToHerosTop = coins[i].Bottom == hero.Top;
+            bool isCoinTouchingTheHerosHeadABitToTheRight = coins[i].Left >= hero.Left && coins[i].Left <= hero.Right;
+            bool isCoinTouchingTheHerosHeadABitToTheLeft = coins[i].Right > hero.Left && coins[i].Right < hero.Right;
+            bool isTheHeroTouchingTheCoinFromTheSide = false;
+
+            if (hero.Left < coins[i].Left)
+            {
+                isTheHeroTouchingTheCoinFromTheSide = hero.Right >= coins[i].Left &&
+                                                              hero.Location.Y <= coins[i].Location.Y + 30 &&
+                                                              hero.Location.Y + 50 > coins[i].Location.Y;
+            }
+            else
+            {
+                isTheHeroTouchingTheCoinFromTheSide = hero.Left <= coins[i].Right &&
+                                                              hero.Location.Y <= coins[i].Location.Y + 30 &&
+                                                              hero.Location.Y + 50 > coins[i].Location.Y;
+            }
+
+            bool isHeroTouchingTheCoinWiththeHead = isCoinBottomNextToHerosTop &&
+                                                    (isCoinTouchingTheHerosHeadABitToTheRight ||
+                                                     isCoinTouchingTheHerosHeadABitToTheLeft);
+
+            if (isHeroTouchingTheCoinWiththeHead || isTheHeroTouchingTheCoinFromTheSide)
+            {
+                coinCounter++;
+                gamePanel.Controls.Remove(coins[i]);
+                coins.RemoveAt(i);
+                textBox3.Text = "Coins: " + coinCounter;
+                indexCoin--;
+
+                bool divisibleWithElevator = false;
+                bool divisibleWithoutElevator = false;
+
+                if (coinCounter < 10)
                 {
-                    c = hero.Right >= coins[i].Left && hero.Location.Y <= coins[i].Location.Y + 30 && hero.Location.Y+50>coins[i].Location.Y;
+                    divisibleWithElevator = coinCounter%5 == 0;
                 }
                 else
                 {
-                    c = hero.Left <= coins[i].Right && hero.Location.Y <= coins[i].Location.Y + 30 && hero.Location.Y + 50 > coins[i].Location.Y;
+                    divisibleWithoutElevator = coinCounter%5 == 0;
                 }
 
-                if ((a && (b || (coins[i].Right > hero.Left && coins[i].Right < hero.Right))) || c)
+                if (divisibleWithElevator)
                 {
-                    coinCounter++;
-                    gamePanel.Controls.Remove(coins[i]);
-                    coins.RemoveAt(i);
-                    textBox3.Text = "Coins: " + coinCounter;
-                    indexCoin--;
+                    coinMovement.Stop();
+                    CoinGenerator.Stop();
+                    rockMovement.Stop();
+                    rockGenerator.Stop();
 
-                    if (coinCounter%5 == 0)
-                    {
-                        coinMovement.Stop();
-                        CoinGenerator.Stop();
-                        rockMovement.Stop();
-                        rockGenerator.Stop();
-
-                        hero.Location = new Point(30, 390);
-                        pictureBox1.Visible = true;
-                        pictureBox2.Visible = true;
-                        textBox1.Visible = true;
-                        textBox2.Visible = true;
-                        normalSpeed = speedHero;
-                        speedHero = 5;
-                    }
+                    hero.Location = new Point(30, 390);
+                    pictureBox1.Visible = true;
+                    pictureBox2.Visible = true;
+                    textBox1.Visible = true;
+                    textBox2.Visible = true;
+                    normalSpeed = speedHero;
+                    speedHero = 5;
+                }
+                else if (divisibleWithoutElevator)
+                {
+                    IncreaseDifficulty();
                 }
             }
         }
@@ -331,37 +350,48 @@ namespace test
                 int y = rocks[i].Location.Y;
                 rocks[i].Location = new Point(x, y + speed);
 
-                bool a = rocks[i].Bottom == hero.Top;
-                bool b = rocks[i].Left >= hero.Left && rocks[i].Left <= hero.Right;
-                bool c = false;
+                DetectCollisionWithAStone(i);
 
-                if (hero.Left < rocks[i].Left)
-                {
-                    c = hero.Right >= rocks[i].Left && hero.Location.Y <= rocks[i].Location.Y + 30 && hero.Location.Y+50> rocks[i].Location.Y;
-                }
-                else
-                {
-                    c = hero.Left < rocks[i].Right && hero.Location.Y <= rocks[i].Location.Y + 30 && hero.Location.Y+50>rocks[i].Location.Y;
-                }
+            }
+        }
 
-                if ((a && (b || (rocks[i].Right > hero.Left && rocks[i].Right < hero.Right))) || c)
-                {
-                    lives--;
-                    gamePanel.Controls.Remove(rocks[i]);
-                    rocks.RemoveAt(i);
-                    textBox2.Text = "Lives: " + lives;
-                    indexRock--;
+        private void DetectCollisionWithAStone(int i)
+        {
+            bool a = rocks[i].Bottom == hero.Top;
+            bool b = rocks[i].Left >= hero.Left && rocks[i].Left <= hero.Right;
+            bool c = false;
 
-                    if (lives == 0)
-                    {
-                        Hide();
-                        Form2 form2 = new Form2();
-                        form2.ShowDialog();
-                        Dispose();
-                    }
+            if (hero.Left < rocks[i].Left)
+            {
+                c = hero.Right >= rocks[i].Left && hero.Location.Y <= rocks[i].Location.Y + 30 &&
+                    hero.Location.Y + 50 > rocks[i].Location.Y;
+            }
+            else
+            {
+                c = hero.Left < rocks[i].Right && hero.Location.Y <= rocks[i].Location.Y + 30 &&
+                    hero.Location.Y + 50 > rocks[i].Location.Y;
+            }
 
-                }
+            if ((a && (b || (rocks[i].Right > hero.Left && rocks[i].Right < hero.Right))) || c)
+            {
+                lives--;
+                gamePanel.Controls.Remove(rocks[i]);
+                rocks.RemoveAt(i);
+                textBox2.Text = "Lives: " + lives;
+                indexRock--;
 
+                GameOver();
+            }
+        }
+
+        private void GameOver()
+        {
+            if (lives == 0)
+            {
+                Hide();
+                Form2 form2 = new Form2();
+                form2.ShowDialog();
+                Dispose();
             }
         }
     }
