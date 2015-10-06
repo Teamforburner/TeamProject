@@ -15,7 +15,7 @@ class Oval : PictureBox
 
         using (var gp = new GraphicsPath())
         {
-            gp.AddEllipse(new Rectangle(0, 0, this.Width - 5, this.Height - 1));
+            gp.AddEllipse(new Rectangle(0, 0, this.Width - 6, this.Height - 1));
             this.Region = new Region(gp);
         }
     }

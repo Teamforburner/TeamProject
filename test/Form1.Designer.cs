@@ -31,10 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gamePanel = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.hero = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.grounPannel = new System.Windows.Forms.Panel();
             this.heroMovement = new System.Windows.Forms.Timer(this.components);
@@ -45,6 +41,11 @@
             this.rockMovement = new System.Windows.Forms.Timer(this.components);
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.hero = new System.Windows.Forms.PictureBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.gamePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -54,7 +55,7 @@
             // 
             // gamePanel
             // 
-            this.gamePanel.BackColor = System.Drawing.Color.White;
+            this.gamePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.gamePanel.Controls.Add(this.pictureBox3);
             this.gamePanel.Controls.Add(this.pictureBox2);
             this.gamePanel.Controls.Add(this.pictureBox1);
@@ -66,6 +67,67 @@
             this.gamePanel.TabIndex = 0;
             this.gamePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.gamePanel_Paint);
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.textBox1.Location = new System.Drawing.Point(99, 128);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(223, 82);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.Visible = false;
+            // 
+            // grounPannel
+            // 
+            this.grounPannel.BackColor = System.Drawing.Color.Green;
+            this.grounPannel.Location = new System.Drawing.Point(12, 454);
+            this.grounPannel.Name = "grounPannel";
+            this.grounPannel.Size = new System.Drawing.Size(400, 18);
+            this.grounPannel.TabIndex = 1;
+            // 
+            // heroMovement
+            // 
+            this.heroMovement.Enabled = true;
+            this.heroMovement.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // TimerElevator
+            // 
+            this.TimerElevator.Tick += new System.EventHandler(this.TimerElevator_Tick);
+            // 
+            // coinMovement
+            // 
+            this.coinMovement.Tick += new System.EventHandler(this.coinMovement_Tick_1);
+            // 
+            // CoinGenerator
+            // 
+            this.CoinGenerator.Tick += new System.EventHandler(this.CoinGenerator_Tick_1);
+            // 
+            // rockGenerator
+            // 
+            this.rockGenerator.Tick += new System.EventHandler(this.rockGenerator_Tick);
+            // 
+            // rockMovement
+            // 
+            this.rockMovement.Tick += new System.EventHandler(this.rockMovement_Tick);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(481, 155);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(81, 20);
+            this.textBox2.TabIndex = 2;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Enabled = false;
+            this.textBox3.Location = new System.Drawing.Point(481, 204);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(82, 20);
+            this.textBox3.TabIndex = 3;
+            // 
             // pictureBox3
             // 
             this.pictureBox3.BackgroundImage = global::test.Properties.Resources.ArrowDown;
@@ -74,6 +136,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(46, 67);
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
             // 
             // pictureBox2
             // 
@@ -109,72 +172,20 @@
             this.hero.TabStop = false;
             this.hero.Click += new System.EventHandler(this.hero_Click);
             // 
-            // textBox1
+            // textBox4
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.textBox1.Location = new System.Drawing.Point(99, 128);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(223, 82);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // grounPannel
-            // 
-            this.grounPannel.BackColor = System.Drawing.Color.Green;
-            this.grounPannel.Location = new System.Drawing.Point(12, 454);
-            this.grounPannel.Name = "grounPannel";
-            this.grounPannel.Size = new System.Drawing.Size(400, 18);
-            this.grounPannel.TabIndex = 1;
-            // 
-            // heroMovement
-            // 
-            this.heroMovement.Enabled = true;
-            this.heroMovement.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // TimerElevator
-            // 
-            this.TimerElevator.Tick += new System.EventHandler(this.TimerElevator_Tick);
-            // 
-            // coinMovement
-            // 
-            this.coinMovement.Interval = 150;
-            this.coinMovement.Tick += new System.EventHandler(this.coinMovement_Tick_1);
-            // 
-            // CoinGenerator
-            // 
-            this.CoinGenerator.Tick += new System.EventHandler(this.CoinGenerator_Tick_1);
-            // 
-            // rockGenerator
-            // 
-            this.rockGenerator.Tick += new System.EventHandler(this.rockGenerator_Tick);
-            // 
-            // rockMovement
-            // 
-            this.rockMovement.Tick += new System.EventHandler(this.rockMovement_Tick);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(481, 155);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(81, 20);
-            this.textBox2.TabIndex = 2;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(481, 204);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(82, 20);
-            this.textBox3.TabIndex = 3;
+            this.textBox4.Enabled = false;
+            this.textBox4.Location = new System.Drawing.Point(481, 241);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(81, 20);
+            this.textBox4.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 476);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.grounPannel);
@@ -211,6 +222,7 @@
         private System.Windows.Forms.Timer rockMovement;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
 

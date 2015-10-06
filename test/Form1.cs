@@ -20,6 +20,12 @@ namespace test
         int indexRock = 0;
         private int coinCounter = 0;
         private int lives = 3;
+        private int gems = 0;
+        private int speed = 5;
+        private int rockFrequency = 4000;
+        private int coinFrequency = 2000;
+        private int speedHero = 5;
+        private int normalSpeed = 5;
 
         Random randomLocation = new Random();
         Random randomSize = new Random();
@@ -42,13 +48,10 @@ namespace test
             int yCoordinateDiamond = 10;
             CoinGenerator.Start();
 
-            
-
-
-            pictureBox1.Visible = true;
-            pictureBox2.Visible = true; 
-
-
+            textBox1.Text = "Well done! Go to the elevator to collect your gem!";
+            textBox2.Text = "Lives: " + lives;
+            textBox3.Text = "Coins: " + coinCounter;
+            textBox4.Text = "Gems: " + gems;
 
         }
         
@@ -75,26 +78,33 @@ namespace test
                         {
                             if (hero.Right < pictureBox1.Left || hero.Bottom <= pictureBox1.Top)
                             {
-                                hero.Left += 5;
+                                hero.Left += speedHero;
                             }
 
                             if (hero.Left >= pictureBox1.Right)
                             {
-                                hero.Left += 5;
+                                hero.Left += speedHero;
                             }
+                            
+                            if (hero.Left >= pictureBox1.Left + pictureBox1.Width / 2 - 20)
+                            {
+                                TimerElevator.Enabled = true;
+                                pictureBox3.Visible = false;
+                            }
+
                         }
                         else
                         {
-                            hero.Left += 5;
+                            coinMovement.Start();
+                            CoinGenerator.Start();
+                            rockMovement.Start();
+                            rockGenerator.Start();
+
+                            hero.Left += speedHero;                    
                         }
                     }
 
-                    if (hero.Left == pictureBox1.Left + pictureBox1.Width / 2 - 20)
-                    {
-                        TimerElevator.Enabled = true;
-                        pictureBox3.Visible = false;
 
-                    }
 
                     break;
 
@@ -105,37 +115,47 @@ namespace test
                         {
                             if (hero.Left > pictureBox1.Right || hero.Bottom <= pictureBox1.Top)
                             {
-                                hero.Left -= 5;
+                                hero.Left -= speedHero;
                             }
 
                             if (hero.Right <= pictureBox1.Left)
                             {
-                                hero.Left -= 5;
+                                hero.Left -= speedHero;
                             }
+                            
+                            if(hero.Left == pictureBox1.Left+pictureBox1.Width/2-20)
+                            {
+                                TimerElevator.Enabled = true;
+                                pictureBox3.Visible = false;
+                                textBox1.Visible = false;
+                            }
+
                         }
                         else
                         {
-                            hero.Left -= 5;
+                            coinMovement.Start();
+                            CoinGenerator.Start();
+                            rockMovement.Start();
+                            rockGenerator.Start();
+
+                            hero.Left -= speedHero;
                         }
-
-             if(hero.Left == pictureBox1.Left+pictureBox1.Width/2-20)
-            {
-                TimerElevator.Enabled = true;
-                pictureBox3.Visible = false;
-                textBox1.Visible = false;
-            }
-
                     }
                     break;
                 case Keys.Up:
-                    int i = hero.Location.X;
-                    int m = hero.Location.Y;
 
-                    if ((hero.Right == pictureBox1.Left && hero.Bottom > pictureBox1.Location.Y) || (hero.Left == pictureBox1.Right && hero.Bottom > pictureBox1.Location.Y))
+                    if (pictureBox1.Visible)
                     {
-                        m -= 5;
-                        hero.Location = new Point(i, m);
+                        int i = hero.Location.X;
+                        int m = hero.Location.Y;
+
+                        if ((hero.Right == pictureBox1.Left && hero.Bottom > pictureBox1.Location.Y) || (hero.Left == pictureBox1.Right && hero.Bottom > pictureBox1.Location.Y))
+                        {
+                            m -= 5;
+                            hero.Location = new Point(i, m);
+                        }
                     }
+
                     break;
                 case Keys.Escape:
                     Application.Exit();
@@ -160,18 +180,50 @@ namespace test
             int p = hero.Location.X;
             int q = hero.Location.Y;
 
-            if (hero.Top > pictureBox2.Bottom)
+            if (hero.Top > pictureBox2.Bottom+5)
             {
                 q -= 5;
-                hero.Location = new Point(p, q);
+                hero.Location = new Point(p, q);                
+                y -= 5;
+                pictureBox1.Location = new Point(x, y);
             }
             else
             {
+                gems++;
                 TimerElevator.Enabled = false;
-            }
+                pictureBox2.Visible = false;
 
-                y -= 5;
-                pictureBox1.Location = new Point(x, y);
+                hero.Location = new Point(30, 390);
+                pictureBox1.Visible = false;
+                y = 420;
+                pictureBox1.Location = new Point(x,y);
+                textBox1.Visible = false;
+                textBox2.Visible = true;
+                textBox4.Visible = true;
+                textBox4.Text = "Gems: " + gems;
+
+                if (coinMovement.Interval != 90)
+                {
+                    coinMovement.Interval -= 10;
+                }
+                else
+                {
+                    speed += 5;
+                    speedHero = normalSpeed;
+                    speedHero += 5;
+                }
+
+                if (rockFrequency > 400)
+                {
+                    rockFrequency -= 400;
+                }
+
+                if (coinFrequency > 400)
+                {
+                    coinFrequency -= 400;
+                }
+
+            }
 
         }
 
@@ -189,7 +241,7 @@ namespace test
             coins[indexCoin].Top = 0;
             coins[indexCoin].Left = randomLocation.Next(0, 410);
             gamePanel.Controls.Add(coins[indexCoin]);
-            CoinGenerator.Interval = 1000;
+            CoinGenerator.Interval = coinFrequency;
             coinMovement.Start();
             indexCoin++;
         }
@@ -200,7 +252,7 @@ namespace test
             {
                 int x = coins[i].Location.X;
                 int y = coins[i].Location.Y;
-                coins[i].Location = new Point(x, y + 5);
+                coins[i].Location = new Point(x, y + speed);
 
                 bool a = coins[i].Bottom == hero.Top;
                 bool b = coins[i].Left >= hero.Left && coins[i].Left <= hero.Right;
@@ -222,6 +274,22 @@ namespace test
                     coins.RemoveAt(i);
                     textBox3.Text = "Coins: " + coinCounter;
                     indexCoin--;
+
+                    if (coinCounter%5 == 0)
+                    {
+                        coinMovement.Stop();
+                        CoinGenerator.Stop();
+                        rockMovement.Stop();
+                        rockGenerator.Stop();
+
+                        hero.Location = new Point(30, 390);
+                        pictureBox1.Visible = true;
+                        pictureBox2.Visible = true;
+                        textBox1.Visible = true;
+                        textBox2.Visible = true;
+                        normalSpeed = speedHero;
+                        speedHero = 5;
+                    }
                 }
             }
         }
@@ -244,12 +312,13 @@ namespace test
             randomRockInterval = new Random();
 
             rocks[indexRock].BackColor = Color.Gray;
-            rocks[indexRock].Height = 30;
+            rocks[indexRock].Image = Resources.rock;
+            rocks[indexRock].Height = 12;
             rocks[indexRock].Width = 30;
             rocks[indexRock].Top = 0;
             rocks[indexRock].Left = randomLocation.Next(0, 370);
             gamePanel.Controls.Add(rocks[indexRock]);
-            rockGenerator.Interval = randomInterval.Next(4000, 5000);
+            rockGenerator.Interval = rockFrequency;
             rockMovement.Start();
             indexRock++;
         }
@@ -260,7 +329,7 @@ namespace test
             {
                 int x = rocks[i].Location.X;
                 int y = rocks[i].Location.Y;
-                rocks[i].Location = new Point(x, y + 5);
+                rocks[i].Location = new Point(x, y + speed);
 
                 bool a = rocks[i].Bottom == hero.Top;
                 bool b = rocks[i].Left >= hero.Left && rocks[i].Left <= hero.Right;
