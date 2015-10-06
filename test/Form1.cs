@@ -23,7 +23,7 @@ namespace test
         private int gems = 0;
         private int speed = 5;
         private int rockFrequency = 4000;
-        private int coinFrequency = 2000;
+        private int coinFrequency = 2200;
         private int speedHero = 5;
         private int normalSpeed = 5;
 
@@ -85,8 +85,8 @@ namespace test
                             {
                                 hero.Left += speedHero;
                             }
-                            
-                            if (hero.Left >= pictureBox1.Left + pictureBox1.Width / 2 - 20)
+
+                            if (hero.Left >= pictureBox1.Left + pictureBox1.Width/2 - 20)
                             {
                                 TimerElevator.Enabled = true;
                                 pictureBox3.Visible = false;
@@ -100,11 +100,9 @@ namespace test
                             rockMovement.Start();
                             rockGenerator.Start();
 
-                            hero.Left += speedHero;                    
+                            hero.Left += speedHero;
                         }
                     }
-
-
 
                     break;
 
@@ -175,7 +173,8 @@ namespace test
         }
 
         private void TimerElevator_Tick(object sender, EventArgs e)
-        {            
+        {
+            textBox1.Visible = false;
 
             int p = hero.Location.X;
             int q = hero.Location.Y;
@@ -307,6 +306,7 @@ namespace test
         private void rockGenerator_Tick(object sender, EventArgs e)
         {
             rock = new PictureBox();
+
             rocks.Add(rock);
             randomRockLocation = new Random();
             randomRockInterval = new Random();
