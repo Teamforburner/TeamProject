@@ -34,5 +34,11 @@ namespace test
         {
             Application.Exit();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form4 credits = new Form4();
+            credits.Show();
+        }
     }
 }
