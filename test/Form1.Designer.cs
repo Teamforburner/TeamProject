@@ -31,135 +31,60 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gamePanel = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.grounPannel = new System.Windows.Forms.Panel();
-            this.heroMovement = new System.Windows.Forms.Timer(this.components);
-            this.TimerElevator = new System.Windows.Forms.Timer(this.components);
-            this.coinMovement = new System.Windows.Forms.Timer(this.components);
-            this.CoinGenerator = new System.Windows.Forms.Timer(this.components);
-            this.rockGenerator = new System.Windows.Forms.Timer(this.components);
-            this.rockMovement = new System.Windows.Forms.Timer(this.components);
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.gemPicture = new System.Windows.Forms.PictureBox();
+            this.lift = new System.Windows.Forms.PictureBox();
             this.hero = new System.Windows.Forms.PictureBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.gemTextBox = new System.Windows.Forms.TextBox();
+            this.grounPannel = new System.Windows.Forms.Panel();
+            this.liftTimer = new System.Windows.Forms.Timer(this.components);
+            this.coinMovementTimer = new System.Windows.Forms.Timer(this.components);
+            this.coinGeneratorTimer = new System.Windows.Forms.Timer(this.components);
+            this.rockGeneratorTimer = new System.Windows.Forms.Timer(this.components);
+            this.rockMovementTimer = new System.Windows.Forms.Timer(this.components);
+            this.livesTextBox = new System.Windows.Forms.TextBox();
+            this.coinsTextBox = new System.Windows.Forms.TextBox();
+            this.gemsTextBox = new System.Windows.Forms.TextBox();
             this.gamePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gemPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lift)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hero)).BeginInit();
             this.SuspendLayout();
             // 
             // gamePanel
             // 
             this.gamePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gamePanel.Controls.Add(this.pictureBox3);
-            this.gamePanel.Controls.Add(this.pictureBox2);
-            this.gamePanel.Controls.Add(this.pictureBox1);
+            this.gamePanel.Controls.Add(this.gemPicture);
+            this.gamePanel.Controls.Add(this.lift);
             this.gamePanel.Controls.Add(this.hero);
-            this.gamePanel.Controls.Add(this.textBox1);
+            this.gamePanel.Controls.Add(this.gemTextBox);
             this.gamePanel.Location = new System.Drawing.Point(12, 14);
             this.gamePanel.Name = "gamePanel";
             this.gamePanel.Size = new System.Drawing.Size(400, 440);
             this.gamePanel.TabIndex = 0;
             this.gamePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.gamePanel_Paint);
             // 
-            // textBox1
+            // gemPicture
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.textBox1.Location = new System.Drawing.Point(99, 128);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(223, 82);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.Visible = false;
+            this.gemPicture.BackColor = System.Drawing.Color.Maroon;
+            this.gemPicture.BackgroundImage = global::test.Properties.Resources.DiamondResize3;
+            this.gemPicture.Location = new System.Drawing.Point(177, 47);
+            this.gemPicture.Name = "gemPicture";
+            this.gemPicture.Size = new System.Drawing.Size(33, 32);
+            this.gemPicture.TabIndex = 2;
+            this.gemPicture.TabStop = false;
+            this.gemPicture.Visible = false;
+            this.gemPicture.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // grounPannel
+            // lift
             // 
-            this.grounPannel.BackColor = System.Drawing.Color.Green;
-            this.grounPannel.Location = new System.Drawing.Point(12, 454);
-            this.grounPannel.Name = "grounPannel";
-            this.grounPannel.Size = new System.Drawing.Size(400, 18);
-            this.grounPannel.TabIndex = 1;
-            // 
-            // heroMovement
-            // 
-            this.heroMovement.Enabled = true;
-            this.heroMovement.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // TimerElevator
-            // 
-            this.TimerElevator.Tick += new System.EventHandler(this.TimerElevator_Tick);
-            // 
-            // coinMovement
-            // 
-            this.coinMovement.Tick += new System.EventHandler(this.coinMovement_Tick_1);
-            // 
-            // CoinGenerator
-            // 
-            this.CoinGenerator.Tick += new System.EventHandler(this.CoinGenerator_Tick_1);
-            // 
-            // rockGenerator
-            // 
-            this.rockGenerator.Tick += new System.EventHandler(this.rockGenerator_Tick);
-            // 
-            // rockMovement
-            // 
-            this.rockMovement.Tick += new System.EventHandler(this.rockMovement_Tick);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(481, 155);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(81, 20);
-            this.textBox2.TabIndex = 2;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(481, 204);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(82, 20);
-            this.textBox3.TabIndex = 3;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImage = global::test.Properties.Resources.ArrowDown;
-            this.pictureBox3.Location = new System.Drawing.Point(186, 246);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(46, 67);
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Visible = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Maroon;
-            this.pictureBox2.BackgroundImage = global::test.Properties.Resources.DiamondResize3;
-            this.pictureBox2.Location = new System.Drawing.Point(177, 47);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 32);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox1.Location = new System.Drawing.Point(120, 420);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(170, 20);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.lift.BackColor = System.Drawing.Color.Gray;
+            this.lift.Location = new System.Drawing.Point(120, 420);
+            this.lift.Name = "lift";
+            this.lift.Size = new System.Drawing.Size(170, 20);
+            this.lift.TabIndex = 1;
+            this.lift.TabStop = false;
+            this.lift.Visible = false;
+            this.lift.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // hero
             // 
@@ -172,22 +97,79 @@
             this.hero.TabStop = false;
             this.hero.Click += new System.EventHandler(this.hero_Click);
             // 
-            // textBox4
+            // gemTextBox
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(481, 241);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(81, 20);
-            this.textBox4.TabIndex = 4;
+            this.gemTextBox.Enabled = false;
+            this.gemTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.gemTextBox.Location = new System.Drawing.Point(99, 128);
+            this.gemTextBox.Multiline = true;
+            this.gemTextBox.Name = "gemTextBox";
+            this.gemTextBox.Size = new System.Drawing.Size(223, 82);
+            this.gemTextBox.TabIndex = 3;
+            this.gemTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.gemTextBox.Visible = false;
+            // 
+            // grounPannel
+            // 
+            this.grounPannel.BackColor = System.Drawing.Color.Green;
+            this.grounPannel.Location = new System.Drawing.Point(12, 454);
+            this.grounPannel.Name = "grounPannel";
+            this.grounPannel.Size = new System.Drawing.Size(400, 18);
+            this.grounPannel.TabIndex = 1;
+            // 
+            // liftTimer
+            // 
+            this.liftTimer.Tick += new System.EventHandler(this.TimerElevator_Tick);
+            // 
+            // coinMovementTimer
+            // 
+            this.coinMovementTimer.Interval = 90;
+            this.coinMovementTimer.Tick += new System.EventHandler(this.coinMovement_Tick_1);
+            // 
+            // coinGeneratorTimer
+            // 
+            this.coinGeneratorTimer.Tick += new System.EventHandler(this.CoinGenerator_Tick_1);
+            // 
+            // rockGeneratorTimer
+            // 
+            this.rockGeneratorTimer.Tick += new System.EventHandler(this.rockGenerator_Tick);
+            // 
+            // rockMovementTimer
+            // 
+            this.rockMovementTimer.Tick += new System.EventHandler(this.rockMovement_Tick);
+            // 
+            // livesTextBox
+            // 
+            this.livesTextBox.Enabled = false;
+            this.livesTextBox.Location = new System.Drawing.Point(481, 155);
+            this.livesTextBox.Name = "livesTextBox";
+            this.livesTextBox.Size = new System.Drawing.Size(81, 20);
+            this.livesTextBox.TabIndex = 2;
+            // 
+            // coinsTextBox
+            // 
+            this.coinsTextBox.Enabled = false;
+            this.coinsTextBox.Location = new System.Drawing.Point(481, 204);
+            this.coinsTextBox.Name = "coinsTextBox";
+            this.coinsTextBox.Size = new System.Drawing.Size(82, 20);
+            this.coinsTextBox.TabIndex = 3;
+            // 
+            // gemsTextBox
+            // 
+            this.gemsTextBox.Enabled = false;
+            this.gemsTextBox.Location = new System.Drawing.Point(481, 241);
+            this.gemsTextBox.Name = "gemsTextBox";
+            this.gemsTextBox.Size = new System.Drawing.Size(81, 20);
+            this.gemsTextBox.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 476);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.gemsTextBox);
+            this.Controls.Add(this.coinsTextBox);
+            this.Controls.Add(this.livesTextBox);
             this.Controls.Add(this.grounPannel);
             this.Controls.Add(this.gamePanel);
             this.Name = "Form1";
@@ -196,9 +178,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.gamePanel.ResumeLayout(false);
             this.gamePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gemPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lift)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hero)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -209,20 +190,18 @@
 
         private System.Windows.Forms.Panel gamePanel;
         private System.Windows.Forms.PictureBox hero;
-        private System.Windows.Forms.Timer heroMovement;
         private System.Windows.Forms.Panel grounPannel;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Timer TimerElevator;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Timer coinMovement;
-        private System.Windows.Forms.Timer CoinGenerator;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Timer rockGenerator;
-        private System.Windows.Forms.Timer rockMovement;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.PictureBox lift;
+        private System.Windows.Forms.PictureBox gemPicture;
+        private System.Windows.Forms.Timer liftTimer;
+        private System.Windows.Forms.TextBox gemTextBox;
+        private System.Windows.Forms.Timer coinMovementTimer;
+        private System.Windows.Forms.Timer coinGeneratorTimer;
+        private System.Windows.Forms.Timer rockGeneratorTimer;
+        private System.Windows.Forms.Timer rockMovementTimer;
+        private System.Windows.Forms.TextBox livesTextBox;
+        private System.Windows.Forms.TextBox coinsTextBox;
+        private System.Windows.Forms.TextBox gemsTextBox;
     }
 }
 
