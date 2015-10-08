@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FallingStonesPlus
+namespace test
 {
     public partial class Form3 : Form
     {

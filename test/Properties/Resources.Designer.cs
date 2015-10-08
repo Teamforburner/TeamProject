@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FallingStonesPlus.Properties {
+namespace test.Properties {
     using System;
     
     
