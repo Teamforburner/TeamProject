@@ -1,4 +1,4 @@
-﻿namespace test
+﻿namespace FallingStonesPlus
 {
     partial class Form1
     {
@@ -66,7 +66,7 @@
             // gemPicture
             // 
             this.gemPicture.BackColor = System.Drawing.Color.Maroon;
-            this.gemPicture.BackgroundImage = global::test.Properties.Resources.DiamondResize3;
+            this.gemPicture.BackgroundImage = global::FallingStonesPlus.Properties.Resources.DiamondResize3;
             this.gemPicture.Location = new System.Drawing.Point(177, 47);
             this.gemPicture.Name = "gemPicture";
             this.gemPicture.Size = new System.Drawing.Size(33, 32);

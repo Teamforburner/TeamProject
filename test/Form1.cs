@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using test.Properties;
+using FallingStonesPlus.Properties;
 
-namespace test
+namespace FallingStonesPlus
 {
     public partial class Form1 : Form
     {

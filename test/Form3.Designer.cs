@@ -1,4 +1,4 @@
-﻿namespace test
+﻿namespace FallingStonesPlus
 {
     partial class Form3
     {
