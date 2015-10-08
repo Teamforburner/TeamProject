@@ -308,9 +308,9 @@ namespace test
                 bool divisibleWithElevator = false;
                 bool divisibleWithoutElevator = false;
 
-                if (coinCounter < 10)
+                if (coinCounter < 6)
                 {
-                    divisibleWithElevator = coinCounter%5 == 0;
+                    divisibleWithElevator = coinCounter%3 == 0;
                 }
                 else
                 {
