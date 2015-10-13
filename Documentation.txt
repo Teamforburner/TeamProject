@@ -12,4 +12,4 @@ Ivomir Ivanov (IvomirIvanov) - created the additional forms for beginning of the
 
 Daniela Valcheva (MiBuena) - created the lift and its way of going up; created the shape of the coins; created the code which detects collision of the hero with a coin or a rock; created the different levels and the increase of difficulty;
 
-Alexander Tinev (a.tinev) - gathered the team; created a back-up option of the game; counters;
+Alexander Tinev (a.tinev) - gathered the team; counters;
