@@ -1,0 +1,15 @@
+Project name: "Falling Rocks Plus"
+
+Description: Our game is a variation of the famous "Falling rocks. There are falling rocks and coins. The main character should aim to collect the coins and try to avoid the rocks. At the end of every level, a lift appears which takes the character to the special gem.
+
+Team name: Team "forburner"
+
+Team members and contributions:
+
+Volen Aleksandrov (Volen) - created the hero - its way of moving around the field; created the coins and the stones and how they fall down.
+
+Ivomir Ivanov (IvomirIvanov) - created the additional forms for beginning of the game, credits and game over.Put the picture of the main character;
+
+Daniela Valcheva (MiBuena) - created the code which detects collision of the hero with a coin or a rock; created the lift and its way of going up; created the different levels and the increase of difficultiy;
+
+Alexander Tinev (a.tinev) - gathered the team; created a back-up option of the game; counters;
