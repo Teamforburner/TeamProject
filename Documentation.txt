@@ -10,6 +10,6 @@ Volen Aleksandrov (Volen) - created the hero - its way of moving around the fiel
 
 Ivomir Ivanov (IvomirIvanov) - created the additional forms for beginning of the game, credits and game over.Put the picture of the main character;
 
-Daniela Valcheva (MiBuena) - created the code which detects collision of the hero with a coin or a rock; created the lift and its way of going up; created the different levels and the increase of difficultiy;
+Daniela Valcheva (MiBuena) - created the lift and its way of going up; created the code which detects collision of the hero with a coin or a rock; created the different levels and the increase of difficulty;
 
 Alexander Tinev (a.tinev) - gathered the team; created a back-up option of the game; counters;
